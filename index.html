@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bridging Dreams</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+            background-color: #f9f4e8;
+        }
+        h1 {
+            color: #6d4c41;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .passage {
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .blank {
+            border-bottom: 1px solid #6d4c41;
+            padding: 2px 5px;
+            min-width: 120px;
+            display: inline-block;
+        }
+        select {
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: inherit;
+        }
+        button {
+            background-color: #6d4c41;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        button:hover {
+            background-color: #5d4037;
+        }
+        .feedback {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 4px;
+            display: none;
+        }
+        .correct {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+        }
+        .incorrect {
+            background-color: #ffebee;
+            color: #c62828;
+        }
+        .explanation {
+            margin-top: 5px;
+            font-style: italic;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bridging Dreams</h1>
+    <div class="passage">
+        <p>
+            The argument began over burnt pizza. “You’re 
+            <span class="blank">
+                <select id="blank1">
+                    <option value="">Select</option>
+                    <option value="spending">spending</option>
+                    <option value="focusing">focusing</option>
+                    <option value="wasting">wasting</option>
+                    <option value="risking">risking</option>
+                </select>
+            </span> 
+            your life on poetry,” Dad exclaimed, loosening his tie but not his tone.
+        </p>
+        <p>
+            “It’s not a waste! The school journal published my piece,” 17-year-old Lila 
+            <span class="blank">
+                <select id="blank2">
+                    <option value="">Select</option>
+                    <option value="refused">refused</option>
+                    <option value="protested">protested</option>
+                    <option value="demanded">demanded</option>
+                    <option value="complained">complained</option>
+                </select>
+            </span>, 
+            holding her notebook like a shield (盾牌).
+        </p>
+        <p>
+            “Publishing a poem isn’t a career,” Mom said 
+            <span class="blank">
+                <select id="blank3">
+                    <option value="">Select</option>
+                    <option value="gently">gently</option>
+                    <option value="angrily">angrily</option>
+                    <option value="hesitantly">hesitantly</option>
+                    <option value="sharply">sharply</option>
+                </select>
+            </span>, 
+            but her words hurt.
+        </p>
+        <p>
+            Later, Lila stormed to the beach—her sanctuary. The horizon stretched endlessly. She scribbled: 
+            “You handed me a compass to 
+            <span class="blank">
+                <select id="blank4">
+                    <option value="">Select</option>
+                    <option value="clear">clear</option>
+                    <option value="light">light</option>
+                    <option value="fight">fight</option>
+                    <option value="guide">guide</option>
+                </select>
+            </span> 
+            my way, 
+            But my dreams outgrew your map’s display.”
+        </p>
+        <p>
+            Days passed in silence. Then, Mom found Lila’s notebook under the couch. She read aloud to Dad that night, voice trembling over lines like:
+            “You built me a 
+            <span class="blank">
+                <select id="blank5">
+                    <option value="">Select</option>
+                    <option value="stage">stage</option>
+                    <option value="bridge">bridge</option>
+                    <option value="cage">cage</option>
+                    <option value="passage">passage</option>
+                </select>
+            </span> 
+            of practical choices, 
+            but my wings ache for sky of free voices.”
+        </p>
+        <p>
+            The next morning, Dad 
+            <span class="blank">
+                <select id="blank6">
+                    <option value="">Select</option>
+                    <option value="left">left</option>
+                    <option value="noticed">noticed</option>
+                    <option value="grabbed">grabbed</option>
+                    <option value="studied">studied</option>
+                </select>
+            </span> 
+            a brochure on Lila’s desk: Rivers & Rhymes Poetry Workshop. Beneath it, a Post-it: “We’ll try. But take a business elective too.”
+        </p>
+        <p>
+            Lila’s throat tightened. Her dreams, a wild river; their fears, the 
+            <span class="blank">
+                <select id="blank7">
+                    <option value="">Select</option>
+                    <option value="lakes">lakes</option>
+                    <option value="banks">banks</option>
+                    <option value="waves">waves</option>
+                    <option value="floods">floods</option>
+                </select>
+            </span> 
+            trying to hold it. It wasn’t freedom, but a negotiated harmony between her passion and their 
+            <span class="blank">
+                <select id="blank8">
+                    <option value="">Select</option>
+                    <option value="action">action</option>
+                    <option value="ambition">ambition</option>
+                    <option value="caution">caution</option>
+                    <option value="intention">intention</option>
+                </select>
+            </span>.
+        </p>
+        <p>
+            At dinner, she slid a poem across the table: 
+            “A bent branch makes the best bridge.” 
+            Mom smiled tearily; Dad 
+            <span class="blank">
+                <select id="blank9">
+                    <option value="">Select</option>
+                    <option value="joked">joked</option>
+                    <option value="commented">commented</option>
+                    <option value="reminded">reminded</option>
+                    <option value="concluded">concluded</option>
+                </select>
+            </span>, 
+            “Just don’t write a sonnet about that burnt pizza.”
+        </p>
+        <p>
+            A year later, Lila stood at a bookstore podium, reading from her first book of poems. Her parents sat in front, Dad awkwardly holding a bouquet of flowers. Her final poem: 
+            “You feared I would drown in metaphors, 
+            but poems taught me to 
+            <span class="blank">
+                <select id="blank10">
+                    <option value="">Select</option>
+                    <option value="catch">catch</option>
+                    <option value="avoid">avoid</option>
+                    <option value="predict">predict</option>
+                    <option value="ride">ride</option>
+                </select>
+            </span> 
+            the storm.”
+        </p>
+        <button id="checkBtn">Check Answers</button>
+        <div id="feedback" class="feedback"></div>
+    </div>
+
+    <script>
+        const correctAnswers = {
+            blank1: "wasting",
+            blank2: "protested",
+            blank3: "gently",
+            blank4: "guide",
+            blank5: "cage",
+            blank6: "left",
+            blank7: "banks",
+            blank8: "caution",
+            blank9: "joked",
+            blank10: "ride"
+        };
+
+        const explanations = {
+            blank1: "Dad implies poetry is a <strong>waste</strong> of time.",
+            blank2: "Lila <strong>defended her position strongly</strong> (protested).",
+            blank3: "Mom said <strong>gentle</strong> but her words hurt (gently spoken).",
+            blank4: "A compass is used to <strong>guide</strong> one's way.",
+            blank5: "Practical choices are compared to a restrictive <strong>cage</strong>.",
+            blank6: "Dad <strong>placed</strong> (left) the brochure on her desk.",
+            blank7: "Banks <strong>contain</strong> a river, symbolizing parental limits.",
+            blank8: "Parents acted out of <strong>careful concern</strong> (caution).",
+            blank9: "Dad made a <strong>lighthearted remark</strong> (joked).",
+            blank10: "Poetry helped her <strong>navigate</strong> (ride) life's challenges."
+        };
+
+        document.getElementById("checkBtn").addEventListener("click", function() {
+            let score = 0;
+            let feedbackHTML = "";
+            
+            for (let i = 1; i <= 10; i++) {
+                const blankId = "blank" + i;
+                const selectedValue = document.getElementById(blankId).value;
+                const isCorrect = selectedValue === correctAnswers[blankId];
+                
+                if (isCorrect) score++;
+                
+                feedbackHTML += `
+                    <div class="${isCorrect ? 'correct' : 'incorrect'}">
+                        <strong>Blank ${i}:</strong> 
+                        ${isCorrect ? '✅ Correct!' : '❌ Incorrect.'} 
+                        <span class="explanation">${explanations[blankId]}</span>
+                    </div>
+                `;
+            }
+            
+            const feedbackDiv = document.getElementById("feedback");
+            feedbackDiv.innerHTML = `
+                <h3>Your Score: ${score}/10</h3>
+                ${feedbackHTML}
+            `;
+            feedbackDiv.style.display = "block";
+        });
+    </script>
+</body>
+</html>

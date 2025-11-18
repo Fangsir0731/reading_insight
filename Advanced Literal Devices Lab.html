@@ -1,0 +1,1762 @@
+<!DOCTYPE html>
+<!-- saved from url=(0067)file:///C:/Users/fangl/Downloads/deepseek_html_20250506_f850ef.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Literal Devices Lab</title>
+    <style>
+        :root {
+            --primary: #3498db;
+            --secondary: #2ecc71;
+            --accent: #e74c3c;
+            --dark: #2c3e50;
+            --light: #ecf0f1;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--dark), var(--primary));
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            border-radius: 0 0 20px 20px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        h1, h2, h3 {
+            margin: 0;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .nav-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .tab-btn {
+            padding: 0.8rem 1.5rem;
+            margin: 0 0.5rem;
+            background: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .tab-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+        
+        .tab-btn.active {
+            background: var(--secondary);
+            color: white;
+        }
+        
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        /* Flashcards Section */
+        .category-selector {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .category-btn {
+            padding: 0.6rem 1.2rem;
+            margin: 0.3rem;
+            background: var(--light);
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .category-btn:hover {
+            background: #d6eaf8;
+        }
+        
+        .category-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .flashcards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .flashcard {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .flashcard:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .flashcard h3 {
+            color: var(--dark);
+            margin-bottom: 0.8rem;
+            font-size: 1.3rem;
+        }
+        
+        .flashcard .definition {
+            margin-bottom: 1rem;
+            color: #555;
+        }
+        
+        .flashcard .example {
+            background: #f8f9fa;
+            padding: 0.8rem;
+            border-radius: 8px;
+            font-style: italic;
+            position: relative;
+        }
+        
+        .flashcard .example .highlight {
+            color: var(--accent);
+            font-weight: bold;
+        }
+        
+        .device-category {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: var(--primary);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 0 0 0 10px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        /* Drag and Drop Section */
+        .drag-drop-container {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            margin-bottom: 2rem;
+        }
+        
+        .drag-drop-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .score-display {
+            background: var(--dark);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+        
+        .draggable-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-bottom: 1.5rem;
+            min-height: 60px;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        
+        .draggable {
+            padding: 0.6rem 1rem;
+            background: var(--primary);
+            color: white;
+            border-radius: 20px;
+            cursor: grab;
+            user-select: none;
+            transition: transform 0.2s ease;
+        }
+        
+        .draggable:hover {
+            transform: scale(1.05);
+        }
+        
+        .draggable.dragging {
+            opacity: 0.5;
+        }
+        
+        .dropzone-container {
+            margin-bottom: 1.5rem;
+        }
+        
+        .dropzone {
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border: 2px dashed #ccc;
+            min-height: 60px;
+            margin-bottom: 0.5rem;
+            transition: background 0.3s ease;
+        }
+        
+        .dropzone.highlight {
+            background: #e3f2fd;
+            border-color: var(--primary);
+        }
+        
+        .dropzone.correct {
+            background: #e8f5e9;
+            border-color: var(--secondary);
+        }
+        
+        .dropzone.incorrect {
+            background: #ffebee;
+            border-color: var(--accent);
+        }
+        
+        .sentence {
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .blank {
+            display: inline-block;
+            min-width: 100px;
+            height: 30px;
+            border-bottom: 2px solid var(--dark);
+            margin: 0 5px;
+            vertical-align: middle;
+        }
+        
+        .filled {
+            display: inline-flex;
+            align-items: center;
+            background: var(--light);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            margin: 0 5px;
+            animation: popIn 0.3s ease;
+        }
+        
+        @keyframes popIn {
+            0% { transform: scale(0); }
+            80% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        .remove-btn {
+            margin-left: 5px;
+            cursor: pointer;
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+        
+        .feedback {
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            display: none;
+        }
+        
+        .feedback.correct {
+            background: #e8f5e9;
+            color: #2e7d32;
+            display: block;
+        }
+        
+        .feedback.incorrect {
+            background: #ffebee;
+            color: #c62828;
+            display: block;
+        }
+        
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1.5rem;
+        }
+        
+        .btn {
+            padding: 0.8rem 1.5rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .btn-secondary {
+            background: var(--light);
+            color: var(--dark);
+        }
+        
+        .btn-success {
+            background: var(--secondary);
+        }
+        
+        .btn-danger {
+            background: var(--accent);
+        }
+        
+        /* Quiz Section */
+        .quiz-container {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            margin-bottom: 2rem;
+        }
+        
+        .quiz-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .quiz-progress {
+            width: 100%;
+            height: 8px;
+            background: #f0f0f0;
+            border-radius: 4px;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+        }
+        
+        .quiz-progress-bar {
+            height: 100%;
+            background: var(--secondary);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        
+        .quiz-question {
+            margin-bottom: 1.5rem;
+        }
+        
+        .quiz-question-text {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+        
+        .quiz-options {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.8rem;
+        }
+        
+        .quiz-option {
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 2px solid transparent;
+        }
+        
+        .quiz-option:hover {
+            background: #e9ecef;
+        }
+        
+        .quiz-option.selected {
+            border-color: var(--primary);
+            background: #e3f2fd;
+        }
+        
+        .quiz-option.correct {
+            border-color: var(--secondary);
+            background: #e8f5e9;
+        }
+        
+        .quiz-option.incorrect {
+            border-color: var(--accent);
+            background: #ffebee;
+        }
+        
+        .quiz-feedback {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 8px;
+            display: none;
+        }
+        
+        .quiz-feedback.show {
+            display: block;
+        }
+        
+        .quiz-feedback.correct {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+        
+        .quiz-feedback.incorrect {
+            background: #ffebee;
+            color: #c62828;
+        }
+        
+        .quiz-explanation {
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+        
+        /* Creative Writing Section */
+        .writing-challenge {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            margin-bottom: 2rem;
+        }
+        
+        .writing-prompt {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        
+        .writing-area {
+            width: 100%;
+            min-height: 150px;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            font-family: inherit;
+            resize: vertical;
+        }
+        
+        .device-selector {
+            margin-bottom: 1rem;
+        }
+        
+        .submissions-container {
+            margin-top: 2rem;
+        }
+        
+        .submission {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+        
+        .submission-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .submission-device {
+            color: var(--primary);
+        }
+        
+        /* Leaderboard Section */
+        .leaderboard {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+        
+        .leaderboard-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        
+        .leaderboard-table th, 
+        .leaderboard-table td {
+            padding: 0.8rem;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .leaderboard-table th {
+            background: var(--light);
+            font-weight: 600;
+        }
+        
+        .leaderboard-table tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+        
+        .leaderboard-table tr:hover {
+            background: #f1f1f1;
+        }
+        
+        .rank {
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        .top-rank {
+            background: #fff8e1 !important;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .flashcards-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .tab-btn {
+                margin: 0.3rem 0;
+                width: 80%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Advanced Literal Devices Lab</h1>
+            <p class="subtitle">Master the art of persuasion through interactive learning</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="nav-tabs">
+            <button class="tab-btn active" onclick="openTab(&#39;flashcards&#39;)">Flashcards</button>
+            <button class="tab-btn" onclick="openTab(&#39;dragdrop&#39;)">Drag &amp; Drop</button>
+            <button class="tab-btn" onclick="openTab(&#39;quiz&#39;)">Quiz Challenge</button>
+            <button class="tab-btn" onclick="openTab(&#39;creative&#39;)">Creative Writing</button>
+            <button class="tab-btn" onclick="openTab(&#39;leaderboard&#39;)">Leaderboard</button>
+        </div>
+        
+        <!-- Flashcards Tab -->
+        <div id="flashcards" class="tab-content active">
+            <h2>Literal Devices Flashcards</h2>
+            <p>Browse through different categories of literal devices. Click on any card to see examples.</p>
+            
+            <div class="category-selector">
+                <button class="category-btn active" onclick="filterDevices(&#39;all&#39;)">All Devices</button>
+                <button class="category-btn" onclick="filterDevices(&#39;comparison&#39;)">Comparison</button>
+                <button class="category-btn" onclick="filterDevices(&#39;sound&#39;)">Sound Devices</button>
+                <button class="category-btn" onclick="filterDevices(&#39;emphasis&#39;)">Emphasis</button>
+                <button class="category-btn" onclick="filterDevices(&#39;figurative&#39;)">Figurative Language</button>
+                <button class="category-btn" onclick="filterDevices(&#39;structure&#39;)">Structural</button>
+            </div>
+            
+            <div class="flashcards-container" id="devices-container"><div class="flashcard">
+                    <div class="device-category">comparison</div>
+                    <h3>Simile</h3>
+                    <div class="definition">A comparison between two unlike things using 'like' or 'as'.</div>
+                    <div class="example">Her smile was <span class="highlight">as bright as the sun</span>.</div>
+                </div><div class="flashcard">
+                    <div class="device-category">comparison</div>
+                    <h3>Metaphor</h3>
+                    <div class="definition">A direct comparison between two unlike things without using 'like' or 'as'.</div>
+                    <div class="example">Time is <span class="highlight">a thief</span>.</div>
+                </div><div class="flashcard">
+                    <div class="device-category">emphasis</div>
+                    <h3>Hyperbole</h3>
+                    <div class="definition">An exaggerated statement not meant to be taken literally.</div>
+                    <div class="example">I've told you <span class="highlight">a million times</span>!</div>
+                </div><div class="flashcard">
+                    <div class="device-category">figurative</div>
+                    <h3>Personification</h3>
+                    <div class="definition">Giving human characteristics to non-human things.</div>
+                    <div class="example">The wind <span class="highlight">whispered</span> through the trees.</div>
+                </div><div class="flashcard">
+                    <div class="device-category">sound</div>
+                    <h3>Alliteration</h3>
+                    <div class="definition">Repetition of initial consonant sounds in neighboring words.</div>
+                    <div class="example"><span class="highlight">Peter Piper picked</span> a peck of pickled peppers.</div>
+                </div><div class="flashcard">
+                    <div class="device-category">sound</div>
+                    <h3>Assonance</h3>
+                    <div class="definition">Repetition of vowel sounds in neighboring words.</div>
+                    <div class="example">The <span class="highlight">early bird catches the worm</span>.</div>
+                </div><div class="flashcard">
+                    <div class="device-category">sound</div>
+                    <h3>Onomatopoeia</h3>
+                    <div class="definition">Words that imitate sounds.</div>
+                    <div class="example">The <span class="highlight">buzz</span> of the bees was loud.</div>
+                </div><div class="flashcard">
+                    <div class="device-category">figurative</div>
+                    <h3>Oxymoron</h3>
+                    <div class="definition">A combination of contradictory terms.</div>
+                    <div class="example"><span class="highlight">Deafening silence</span> filled the room.</div>
+                </div><div class="flashcard">
+                    <div class="device-category">figurative</div>
+                    <h3>Paradox</h3>
+                    <div class="definition">A statement that contradicts itself but may reveal a truth.</div>
+                    <div class="example"><span class="highlight">Less is more</span>.</div>
+                </div><div class="flashcard">
+                    <div class="device-category">structure</div>
+                    <h3>Anaphora</h3>
+                    <div class="definition">Repetition of a word or phrase at the beginning of successive clauses.</div>
+                    <div class="example"><span class="highlight">We shall fight</span> on the beaches, <span class="highlight">we shall fight</span> on the landing grounds...</div>
+                </div><div class="flashcard">
+                    <div class="device-category">structure</div>
+                    <h3>Epistrophe</h3>
+                    <div class="definition">Repetition of a word or phrase at the end of successive clauses.</div>
+                    <div class="example">See no evil, hear no evil, <span class="highlight">speak no evil</span>.</div>
+                </div><div class="flashcard">
+                    <div class="device-category">emphasis</div>
+                    <h3>Euphemism</h3>
+                    <div class="definition">A mild or indirect term substituted for a harsh one.</div>
+                    <div class="example">He <span class="highlight">passed away</span> instead of 'he died'.</div>
+                </div><div class="flashcard">
+                    <div class="device-category">figurative</div>
+                    <h3>Irony</h3>
+                    <div class="definition">Saying the opposite of what is meant, often for humorous effect.</div>
+                    <div class="example">What <span class="highlight">pleasant</span> weather! (during a storm)</div>
+                </div><div class="flashcard">
+                    <div class="device-category">emphasis</div>
+                    <h3>Litotes</h3>
+                    <div class="definition">Understatement using negation of the opposite.</div>
+                    <div class="example">It's <span class="highlight">not bad</span> (meaning it's good).</div>
+                </div><div class="flashcard">
+                    <div class="device-category">figurative</div>
+                    <h3>Synecdoche</h3>
+                    <div class="definition">Using a part to represent the whole.</div>
+                    <div class="example">All <span class="highlight">hands</span> on deck (meaning all people).</div>
+                </div><div class="flashcard">
+                    <div class="device-category">figurative</div>
+                    <h3>Metonymy</h3>
+                    <div class="definition">Using a related term to represent something.</div>
+                    <div class="example">The <span class="highlight">White House</span> announced (meaning the President).</div>
+                </div><div class="flashcard">
+                    <div class="device-category">structure</div>
+                    <h3>Antithesis</h3>
+                    <div class="definition">Juxtaposition of contrasting ideas in balanced phrases.</div>
+                    <div class="example">It was the <span class="highlight">best of times</span>, it was the <span class="highlight">worst of times</span>.</div>
+                </div><div class="flashcard">
+                    <div class="device-category">structure</div>
+                    <h3>Chiasmus</h3>
+                    <div class="definition">Reversal of grammatical structures in successive phrases.</div>
+                    <div class="example">Ask not what your country can do for you, ask what <span class="highlight">you can do for your country</span>.</div>
+                </div><div class="flashcard">
+                    <div class="device-category">structure</div>
+                    <h3>Zeugma</h3>
+                    <div class="definition">Using a word to modify two other words in different ways.</div>
+                    <div class="example">She <span class="highlight">broke</span> his car and his heart.</div>
+                </div><div class="flashcard">
+                    <div class="device-category">emphasis</div>
+                    <h3>Literal Question</h3>
+                    <div class="definition">A question asked to make a point rather than get an answer.</div>
+                    <div class="example"><span class="highlight">Isn't it obvious</span> we need change?</div>
+                </div><div class="flashcard">
+                    <div class="device-category">figurative</div>
+                    <h3>Apostrophe</h3>
+                    <div class="definition">Addressing an absent person or abstract idea.</div>
+                    <div class="example"><span class="highlight">Oh, Death</span>, where is thy sting?</div>
+                </div><div class="flashcard">
+                    <div class="device-category">figurative</div>
+                    <h3>Allusion</h3>
+                    <div class="definition">An indirect reference to a person, event, or work.</div>
+                    <div class="example">He was a <span class="highlight">Good Samaritan</span> yesterday.</div>
+                </div><div class="flashcard">
+                    <div class="device-category">structure</div>
+                    <h3>Anadiplosis</h3>
+                    <div class="definition">Repetition of the last word of one clause at the beginning of the next.</div>
+                    <div class="example">Fear leads to anger. <span class="highlight">Anger</span> leads to hate.</div>
+                </div><div class="flashcard">
+                    <div class="device-category">structure</div>
+                    <h3>Asyndeton</h3>
+                    <div class="definition">Omission of conjunctions between related clauses.</div>
+                    <div class="example">I came, I saw, <span class="highlight">I conquered</span>.</div>
+                </div><div class="flashcard">
+                    <div class="device-category">structure</div>
+                    <h3>Polysyndeton</h3>
+                    <div class="definition">Use of many conjunctions for emphasis.</div>
+                    <div class="example">We have ships <span class="highlight">and</span> men <span class="highlight">and</span> money <span class="highlight">and</span> stores.</div>
+                </div><div class="flashcard">
+                    <div class="device-category">emphasis</div>
+                    <h3>Understatement</h3>
+                    <div class="definition">Presenting something as less important than it is.</div>
+                    <div class="example">It's just a <span class="highlight">scratch</span> (when referring to a large wound).</div>
+                </div><div class="flashcard">
+                    <div class="device-category">sound</div>
+                    <h3>Cacophony</h3>
+                    <div class="definition">Harsh, discordant sounds for effect.</div>
+                    <div class="example">The <span class="highlight">grating, scraping</span> sound made me cringe.</div>
+                </div><div class="flashcard">
+                    <div class="device-category">sound</div>
+                    <h3>Euphony</h3>
+                    <div class="definition">Pleasant, harmonious sounds for effect.</div>
+                    <div class="example">The <span class="highlight">lulling, lilting</span> melody soothed me.</div>
+                </div><div class="flashcard">
+                    <div class="device-category">structure</div>
+                    <h3>Parallelism</h3>
+                    <div class="definition">Using similar grammatical structures for effect.</div>
+                    <div class="example">Like father, <span class="highlight">like son</span>.</div>
+                </div><div class="flashcard">
+                    <div class="device-category">structure</div>
+                    <h3>Antimetabole</h3>
+                    <div class="definition">Repetition of words in reverse order.</div>
+                    <div class="example">Eat to live, not <span class="highlight">live to eat</span>.</div>
+                </div></div>
+        </div>
+        
+        <!-- Drag and Drop Tab -->
+        <div id="dragdrop" class="tab-content">
+            <h2>Drag &amp; Drop Practice</h2>
+            <p>Drag the correct literal device into each sentence blank. Try to complete all sentences with perfect score!</p>
+            
+            <div class="drag-drop-container">
+                <div class="drag-drop-header">
+                    <h3>Exercise 1: Complete the Sentences</h3>
+                    <div class="score-display">Score: <span id="score">0</span>/<span id="total-questions">5</span></div>
+                </div>
+                
+                <div class="draggable-items" id="draggable-items"><div class="draggable" draggable="true" data-value="some time">some time</div><div class="draggable" draggable="true" data-value="a little while">a little while</div><div class="draggable" draggable="true" data-value="rushed">rushed</div><div class="draggable" draggable="true" data-value="whispered">whispered</div><div class="draggable" draggable="true" data-value="Joy, Sorrow">Joy, Sorrow</div><div class="draggable" draggable="true" data-value="a million years">a million years</div><div class="draggable" draggable="true" data-value="a melody">a melody</div><div class="draggable" draggable="true" data-value="Love, Hate">Love, Hate</div><div class="draggable" draggable="true" data-value="an ocean">an ocean</div><div class="draggable" draggable="true" data-value="a burning flame">a burning flame</div><div class="draggable" draggable="true" data-value="blew">blew</div><div class="draggable" draggable="true" data-value="beginning, end">beginning, end</div><div class="draggable" draggable="true" data-value="howled">howled</div><div class="draggable" draggable="true" data-value="a few minutes">a few minutes</div><div class="draggable" draggable="true" data-value="best of times, worst of times">best of times, worst of times</div><div class="draggable" draggable="true" data-value="Hope, Despair">Hope, Despair</div><div class="draggable" draggable="true" data-value="light, dark">light, dark</div><div class="draggable" draggable="true" data-value="Fear, Anger">Fear, Anger</div><div class="draggable" draggable="true" data-value="day, night">day, night</div><div class="draggable" draggable="true" data-value="like a rose">like a rose</div></div>
+                
+                <div id="dropzone-container"><div class="dropzone-container">
+                    <div class="sentence">
+                        My love is 
+                        <div class="dropzone" data-index="0" data-correct="like a rose"></div>
+                        .
+                        <div class="device-tag">Device: simile</div>
+                    </div>
+                </div><div class="dropzone-container">
+                    <div class="sentence">
+                        I can wait, of course I can, even for 
+                        <div class="dropzone" data-index="1" data-correct="a million years"></div>
+                        .
+                        <div class="device-tag">Device: hyperbole</div>
+                    </div>
+                </div><div class="dropzone-container">
+                    <div class="sentence">
+                        The wind 
+                        <div class="dropzone" data-index="2" data-correct="whispered"></div>
+                         through the trees.
+                        <div class="device-tag">Device: personification</div>
+                    </div>
+                </div><div class="dropzone-container">
+                    <div class="sentence">
+                        
+                        <div class="dropzone" data-index="3" data-correct="Fear, Anger"></div>
+                         leads to anger. 
+                        <div class="device-tag">Device: anadiplosis</div>
+                    </div>
+                </div><div class="dropzone-container">
+                    <div class="sentence">
+                        It was the 
+                        <div class="dropzone" data-index="4" data-correct="best of times, worst of times"></div>
+                        , it was the 
+                        <div class="device-tag">Device: antithesis</div>
+                    </div>
+                </div></div>
+                
+                <div class="feedback" id="feedback"></div>
+                
+                <div class="controls">
+                    <button class="btn btn-secondary" onclick="resetDragDrop()">Reset</button>
+                    <button class="btn btn-success" onclick="checkAnswers()">Check Answers</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Quiz Tab -->
+        <div id="quiz" class="tab-content">
+            <h2>Quiz Challenge</h2>
+            <p>Test your knowledge by identifying the literal device used in each sentence. Complete all questions to unlock the next level!</p>
+            
+            <div class="quiz-container">
+                <div class="quiz-header">
+                    <h3>Question <span id="current-question">1</span> of <span id="total-quiz-questions">5</span></h3>
+                    <div id="timer">Time: 0:13</div>
+                </div>
+                
+                <div class="quiz-progress">
+                    <div class="quiz-progress-bar" id="quiz-progress" style="width: 0%;"></div>
+                </div>
+                
+                <div id="quiz-content">
+                <div class="quiz-question">
+                    <div class="quiz-question-text">Which literal device is used in: 'Her smile was as bright as the sun.'?</div>
+                    <div class="quiz-options">
+                        
+                            <div class="quiz-option" onclick="selectQuizOption(this, 0)">
+                                Metaphor
+                            </div>
+                        
+                            <div class="quiz-option" onclick="selectQuizOption(this, 1)">
+                                Simile
+                            </div>
+                        
+                            <div class="quiz-option" onclick="selectQuizOption(this, 2)">
+                                Hyperbole
+                            </div>
+                        
+                            <div class="quiz-option" onclick="selectQuizOption(this, 3)">
+                                Personification
+                            </div>
+                        
+                    </div>
+                </div>
+                <div class="quiz-feedback" id="quiz-feedback"></div>
+            </div>
+                
+                <div class="controls">
+                    <button class="btn btn-secondary" id="prev-btn" onclick="prevQuestion()" disabled="">Previous</button>
+                    <button class="btn btn-primary" id="next-btn" onclick="nextQuestion()">Next</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Creative Writing Tab -->
+        <div id="creative" class="tab-content">
+            <h2>Creative Writing Challenges</h2>
+            <p>Practice using literal devices in your own writing. Submit your creations to share with others!</p>
+            
+            <div class="writing-challenge">
+                <h3>Daily Writing Challenge</h3>
+                <div class="writing-prompt" id="writing-prompt">Describe your favorite season using at least three different literal devices.</div>
+                
+                <div class="device-selector">
+                    <label for="device-select">Required Device:</label>
+                    <select id="device-select" class="writing-area"><option value="Simile">Simile</option><option value="Metaphor">Metaphor</option><option value="Hyperbole">Hyperbole</option><option value="Personification">Personification</option><option value="Alliteration">Alliteration</option><option value="Assonance">Assonance</option><option value="Onomatopoeia">Onomatopoeia</option><option value="Oxymoron">Oxymoron</option><option value="Paradox">Paradox</option><option value="Anaphora">Anaphora</option><option value="Epistrophe">Epistrophe</option><option value="Euphemism">Euphemism</option><option value="Irony">Irony</option><option value="Litotes">Litotes</option><option value="Synecdoche">Synecdoche</option><option value="Metonymy">Metonymy</option><option value="Antithesis">Antithesis</option><option value="Chiasmus">Chiasmus</option><option value="Zeugma">Zeugma</option><option value="Literal Question">Literal Question</option><option value="Apostrophe">Apostrophe</option><option value="Allusion">Allusion</option><option value="Anadiplosis">Anadiplosis</option><option value="Asyndeton">Asyndeton</option><option value="Polysyndeton">Polysyndeton</option><option value="Understatement">Understatement</option><option value="Cacophony">Cacophony</option><option value="Euphony">Euphony</option><option value="Parallelism">Parallelism</option><option value="Antimetabole">Antimetabole</option></select>
+                </div>
+                
+                <textarea class="writing-area" id="user-writing" placeholder="Write your response here..."></textarea>
+                
+                <button class="btn btn-success" onclick="submitWriting()">Submit</button>
+            </div>
+            
+            <div class="submissions-container" id="submissions-container">
+                <h3>Recent Submissions</h3>
+                <!-- Submissions will be loaded here by JavaScript -->
+            </div>
+        </div>
+        
+        <!-- Leaderboard Tab -->
+        <div id="leaderboard" class="tab-content">
+            <h2>Leaderboard</h2>
+            <p>See how you rank against other students in completing challenges!</p>
+            
+            <div class="leaderboard">
+                <div class="leaderboard-header">
+                    <h3>Top Performers</h3>
+                    <div class="tabs">
+                        <button class="btn btn-secondary" onclick="showLeaderboard(&#39;daily&#39;)">Daily</button>
+                        <button class="btn btn-secondary" onclick="showLeaderboard(&#39;weekly&#39;)">Weekly</button>
+                        <button class="btn btn-primary" onclick="showLeaderboard(&#39;alltime&#39;)">All-Time</button>
+                    </div>
+                </div>
+                
+                <table class="leaderboard-table" id="leaderboard-table">
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Name</th>
+                        <th>Score</th>
+                        <th>Badges</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                        <tr class="top-rank">
+                            <td class="rank">1</td>
+                            <td>Alex</td>
+                            <td>21500</td>
+                            <td>★★★★★★★★★★</td>
+                        </tr>
+                    
+                        <tr class="">
+                            <td class="rank">2</td>
+                            <td>Jordan</td>
+                            <td>21000</td>
+                            <td>★★★★★★★★★</td>
+                        </tr>
+                    
+                        <tr class="">
+                            <td class="rank">3</td>
+                            <td>Taylor</td>
+                            <td>19500</td>
+                            <td>★★★★★★★★</td>
+                        </tr>
+                    
+                        <tr class="">
+                            <td class="rank">4</td>
+                            <td>Casey</td>
+                            <td>18000</td>
+                            <td>★★★★★★★</td>
+                        </tr>
+                    
+                        <tr class="">
+                            <td class="rank">5</td>
+                            <td>Riley</td>
+                            <td>17500</td>
+                            <td>★★★★★★★</td>
+                        </tr>
+                    
+                </tbody>
+            </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Literal Devices Data
+        const literalDevices = [
+            {
+                name: "Simile",
+                definition: "A comparison between two unlike things using 'like' or 'as'.",
+                example: "Her smile was <span class='highlight'>as bright as the sun</span>.",
+                category: "comparison"
+            },
+            {
+                name: "Metaphor",
+                definition: "A direct comparison between two unlike things without using 'like' or 'as'.",
+                example: "Time is <span class='highlight'>a thief</span>.",
+                category: "comparison"
+            },
+            {
+                name: "Hyperbole",
+                definition: "An exaggerated statement not meant to be taken literally.",
+                example: "I've told you <span class='highlight'>a million times</span>!",
+                category: "emphasis"
+            },
+            {
+                name: "Personification",
+                definition: "Giving human characteristics to non-human things.",
+                example: "The wind <span class='highlight'>whispered</span> through the trees.",
+                category: "figurative"
+            },
+            {
+                name: "Alliteration",
+                definition: "Repetition of initial consonant sounds in neighboring words.",
+                example: "<span class='highlight'>Peter Piper picked</span> a peck of pickled peppers.",
+                category: "sound"
+            },
+            {
+                name: "Assonance",
+                definition: "Repetition of vowel sounds in neighboring words.",
+                example: "The <span class='highlight'>early bird catches the worm</span>.",
+                category: "sound"
+            },
+            {
+                name: "Onomatopoeia",
+                definition: "Words that imitate sounds.",
+                example: "The <span class='highlight'>buzz</span> of the bees was loud.",
+                category: "sound"
+            },
+            {
+                name: "Oxymoron",
+                definition: "A combination of contradictory terms.",
+                example: "<span class='highlight'>Deafening silence</span> filled the room.",
+                category: "figurative"
+            },
+            {
+                name: "Paradox",
+                definition: "A statement that contradicts itself but may reveal a truth.",
+                example: "<span class='highlight'>Less is more</span>.",
+                category: "figurative"
+            },
+            {
+                name: "Anaphora",
+                definition: "Repetition of a word or phrase at the beginning of successive clauses.",
+                example: "<span class='highlight'>We shall fight</span> on the beaches, <span class='highlight'>we shall fight</span> on the landing grounds...",
+                category: "structure"
+            },
+            {
+                name: "Epistrophe",
+                definition: "Repetition of a word or phrase at the end of successive clauses.",
+                example: "See no evil, hear no evil, <span class='highlight'>speak no evil</span>.",
+                category: "structure"
+            },
+            {
+                name: "Euphemism",
+                definition: "A mild or indirect term substituted for a harsh one.",
+                example: "He <span class='highlight'>passed away</span> instead of 'he died'.",
+                category: "emphasis"
+            },
+            {
+                name: "Irony",
+                definition: "Saying the opposite of what is meant, often for humorous effect.",
+                example: "What <span class='highlight'>pleasant</span> weather! (during a storm)",
+                category: "figurative"
+            },
+            {
+                name: "Litotes",
+                definition: "Understatement using negation of the opposite.",
+                example: "It's <span class='highlight'>not bad</span> (meaning it's good).",
+                category: "emphasis"
+            },
+            {
+                name: "Synecdoche",
+                definition: "Using a part to represent the whole.",
+                example: "All <span class='highlight'>hands</span> on deck (meaning all people).",
+                category: "figurative"
+            },
+            {
+                name: "Metonymy",
+                definition: "Using a related term to represent something.",
+                example: "The <span class='highlight'>White House</span> announced (meaning the President).",
+                category: "figurative"
+            },
+            {
+                name: "Antithesis",
+                definition: "Juxtaposition of contrasting ideas in balanced phrases.",
+                example: "It was the <span class='highlight'>best of times</span>, it was the <span class='highlight'>worst of times</span>.",
+                category: "structure"
+            },
+            {
+                name: "Chiasmus",
+                definition: "Reversal of grammatical structures in successive phrases.",
+                example: "Ask not what your country can do for you, ask what <span class='highlight'>you can do for your country</span>.",
+                category: "structure"
+            },
+            {
+                name: "Zeugma",
+                definition: "Using a word to modify two other words in different ways.",
+                example: "She <span class='highlight'>broke</span> his car and his heart.",
+                category: "structure"
+            },
+            {
+                name: "Literal Question",
+                definition: "A question asked to make a point rather than get an answer.",
+                example: "<span class='highlight'>Isn't it obvious</span> we need change?",
+                category: "emphasis"
+            },
+            {
+                name: "Apostrophe",
+                definition: "Addressing an absent person or abstract idea.",
+                example: "<span class='highlight'>Oh, Death</span>, where is thy sting?",
+                category: "figurative"
+            },
+            {
+                name: "Allusion",
+                definition: "An indirect reference to a person, event, or work.",
+                example: "He was a <span class='highlight'>Good Samaritan</span> yesterday.",
+                category: "figurative"
+            },
+            {
+                name: "Anadiplosis",
+                definition: "Repetition of the last word of one clause at the beginning of the next.",
+                example: "Fear leads to anger. <span class='highlight'>Anger</span> leads to hate.",
+                category: "structure"
+            },
+            {
+                name: "Asyndeton",
+                definition: "Omission of conjunctions between related clauses.",
+                example: "I came, I saw, <span class='highlight'>I conquered</span>.",
+                category: "structure"
+            },
+            {
+                name: "Polysyndeton",
+                definition: "Use of many conjunctions for emphasis.",
+                example: "We have ships <span class='highlight'>and</span> men <span class='highlight'>and</span> money <span class='highlight'>and</span> stores.",
+                category: "structure"
+            },
+            {
+                name: "Understatement",
+                definition: "Presenting something as less important than it is.",
+                example: "It's just a <span class='highlight'>scratch</span> (when referring to a large wound).",
+                category: "emphasis"
+            },
+            {
+                name: "Cacophony",
+                definition: "Harsh, discordant sounds for effect.",
+                example: "The <span class='highlight'>grating, scraping</span> sound made me cringe.",
+                category: "sound"
+            },
+            {
+                name: "Euphony",
+                definition: "Pleasant, harmonious sounds for effect.",
+                example: "The <span class='highlight'>lulling, lilting</span> melody soothed me.",
+                category: "sound"
+            },
+            {
+                name: "Parallelism",
+                definition: "Using similar grammatical structures for effect.",
+                example: "Like father, <span class='highlight'>like son</span>.",
+                category: "structure"
+            },
+            {
+                name: "Antimetabole",
+                definition: "Repetition of words in reverse order.",
+                example: "Eat to live, not <span class='highlight'>live to eat</span>.",
+                category: "structure"
+            }
+        ];
+
+        // Drag and Drop Data
+        const dragDropExercises = [
+            {
+                sentence: "My love is <blank>.",
+                correctAnswer: "like a rose",
+                device: "simile",
+                options: ["like a rose", "a burning flame", "an ocean", "a melody"]
+            },
+            {
+                sentence: "I can wait, of course I can, even for <blank>.",
+                correctAnswer: "a million years",
+                device: "hyperbole",
+                options: ["a million years", "a little while", "some time", "a few minutes"]
+            },
+            {
+                sentence: "The wind <blank> through the trees.",
+                correctAnswer: "whispered",
+                device: "personification",
+                options: ["whispered", "blew", "howled", "rushed"]
+            },
+            {
+                sentence: "<blank> leads to anger. <blank> leads to hate.",
+                correctAnswer: "Fear, Anger",
+                device: "anadiplosis",
+                options: ["Fear, Anger", "Love, Hate", "Joy, Sorrow", "Hope, Despair"]
+            },
+            {
+                sentence: "It was the <blank>, it was the <blank>.",
+                correctAnswer: "best of times, worst of times",
+                device: "antithesis",
+                options: ["best of times, worst of times", "beginning, end", "light, dark", "day, night"]
+            }
+        ];
+
+        // Quiz Data
+        const quizQuestions = [
+            {
+                question: "Which literal device is used in: 'Her smile was as bright as the sun.'?",
+                options: ["Metaphor", "Simile", "Hyperbole", "Personification"],
+                correctAnswer: 1,
+                explanation: "This is a simile because it uses 'as' to compare two unlike things."
+            },
+            {
+                question: "'Time is a thief.' is an example of:",
+                options: ["Simile", "Metaphor", "Personification", "Alliteration"],
+                correctAnswer: 1,
+                explanation: "This is a metaphor because it directly compares time to a thief without using 'like' or 'as'."
+            },
+            {
+                question: "The phrase 'deafening silence' contains which device?",
+                options: ["Oxymoron", "Paradox", "Euphemism", "Irony"],
+                correctAnswer: 0,
+                explanation: "This is an oxymoron because it combines contradictory terms ('deafening' and 'silence')."
+            },
+            {
+                question: "'We shall fight on the beaches, we shall fight on the landing grounds...' uses:",
+                options: ["Anaphora", "Epistrophe", "Chiasmus", "Zeugma"],
+                correctAnswer: 0,
+                explanation: "This is anaphora because it repeats 'we shall fight' at the beginning of successive clauses."
+            },
+            {
+                question: "Which device is used in: 'Ask not what your country can do for you...'?",
+                options: ["Antithesis", "Chiasmus", "Parallelism", "Anadiplosis"],
+                correctAnswer: 1,
+                explanation: "This is chiasmus because it reverses the structure in the second half of the sentence."
+            }
+        ];
+
+        // Writing Prompts
+        const writingPrompts = [
+            "Describe your favorite season using at least three different literal devices.",
+            "Write a short persuasive paragraph about why students should learn literal devices.",
+            "Create a character description using vivid imagery and figurative language.",
+            "Write a dialogue between two people where one uses many literal devices to convince the other.",
+            "Describe an everyday object in an extraordinary way using creative devices."
+        ];
+
+        // Leaderboard Data
+        const leaderboardData = {
+            daily: [
+                { name: "Alex", score: 950, badges: 3 },
+                { name: "Jordan", score: 870, badges: 2 },
+                { name: "Taylor", score: 820, badges: 2 },
+                { name: "Casey", score: 790, badges: 1 },
+                { name: "Riley", score: 750, badges: 1 }
+            ],
+            weekly: [
+                { name: "Jordan", score: 4200, badges: 5 },
+                { name: "Alex", score: 4100, badges: 4 },
+                { name: "Taylor", score: 3850, badges: 4 },
+                { name: "Casey", score: 3700, badges: 3 },
+                { name: "Riley", score: 3600, badges: 3 }
+            ],
+            alltime: [
+                { name: "Alex", score: 21500, badges: 10 },
+                { name: "Jordan", score: 21000, badges: 9 },
+                { name: "Taylor", score: 19500, badges: 8 },
+                { name: "Casey", score: 18000, badges: 7 },
+                { name: "Riley", score: 17500, badges: 7 }
+            ]
+        };
+
+        // User Submissions
+        let userSubmissions = [];
+
+        // DOM Elements
+        const devicesContainer = document.getElementById('devices-container');
+        const draggableItems = document.getElementById('draggable-items');
+        const dropzoneContainer = document.getElementById('dropzone-container');
+        const scoreDisplay = document.getElementById('score');
+        const totalQuestionsDisplay = document.getElementById('total-questions');
+        const feedback = document.getElementById('feedback');
+        const quizContent = document.getElementById('quiz-content');
+        const currentQuestionDisplay = document.getElementById('current-question');
+        const totalQuizQuestionsDisplay = document.getElementById('total-quiz-questions');
+        const quizProgress = document.getElementById('quiz-progress');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const writingPrompt = document.getElementById('writing-prompt');
+        const deviceSelect = document.getElementById('device-select');
+        const userWriting = document.getElementById('user-writing');
+        const submissionsContainer = document.getElementById('submissions-container');
+        const leaderboardTable = document.getElementById('leaderboard-table');
+
+        // App State
+        let currentTab = 'flashcards';
+        let currentDeviceFilter = 'all';
+        let currentDragDropScore = 0;
+        let currentQuizQuestion = 0;
+        let quizAnswers = [];
+        let quizStartTime = null;
+        let timerInterval = null;
+
+        // Initialize the app
+        function init() {
+            loadDevices();
+            loadDragDropExercise();
+            loadQuizQuestion();
+            loadWritingPrompt();
+            loadLeaderboard('alltime');
+            
+            // Set up event listeners for draggable items
+            document.querySelectorAll('.draggable').forEach(item => {
+                item.addEventListener('dragstart', dragStart);
+            });
+            
+            document.querySelectorAll('.dropzone').forEach(zone => {
+                zone.addEventListener('dragover', dragOver);
+                zone.addEventListener('drop', drop);
+            });
+            
+            // Start quiz timer
+            quizStartTime = new Date();
+            timerInterval = setInterval(updateTimer, 1000);
+        }
+
+        // Load literal devices into flashcards
+        function loadDevices() {
+            devicesContainer.innerHTML = '';
+            
+            const filteredDevices = currentDeviceFilter === 'all' 
+                ? literalDevices 
+                : literalDevices.filter(device => device.category === currentDeviceFilter);
+            
+            filteredDevices.forEach(device => {
+                const card = document.createElement('div');
+                card.className = 'flashcard';
+                card.innerHTML = `
+                    <div class="device-category">${device.category}</div>
+                    <h3>${device.name}</h3>
+                    <div class="definition">${device.definition}</div>
+                    <div class="example">${device.example}</div>
+                `;
+                devicesContainer.appendChild(card);
+            });
+        }
+
+        // Load drag and drop exercise
+        function loadDragDropExercise() {
+            draggableItems.innerHTML = '';
+            dropzoneContainer.innerHTML = '';
+            currentDragDropScore = 0;
+            scoreDisplay.textContent = '0';
+            totalQuestionsDisplay.textContent = dragDropExercises.length;
+            
+            // Create draggable items
+            const allOptions = [];
+            dragDropExercises.forEach(exercise => {
+                allOptions.push(...exercise.options);
+            });
+            
+            // Shuffle options
+            const shuffledOptions = [...new Set(allOptions)].sort(() => Math.random() - 0.5);
+            
+            shuffledOptions.forEach(option => {
+                const draggable = document.createElement('div');
+                draggable.className = 'draggable';
+                draggable.textContent = option;
+                draggable.draggable = true;
+                draggable.dataset.value = option;
+                draggable.addEventListener('dragstart', dragStart);
+                draggableItems.appendChild(draggable);
+            });
+            
+            // Create dropzones
+            dragDropExercises.forEach((exercise, index) => {
+                const dropzoneGroup = document.createElement('div');
+                dropzoneGroup.className = 'dropzone-container';
+                
+                const sentenceParts = exercise.sentence.split('<blank>');
+                
+                dropzoneGroup.innerHTML = `
+                    <div class="sentence">
+                        ${sentenceParts[0]}
+                        <div class="dropzone" data-index="${index}" data-correct="${exercise.correctAnswer}"></div>
+                        ${sentenceParts[1]}
+                        <div class="device-tag">Device: ${exercise.device}</div>
+                    </div>
+                `;
+                
+                dropzoneContainer.appendChild(dropzoneGroup);
+            });
+            
+            // Set up dropzone event listeners
+            document.querySelectorAll('.dropzone').forEach(zone => {
+                zone.addEventListener('dragover', dragOver);
+                zone.addEventListener('drop', drop);
+            });
+        }
+
+        // Drag and Drop Functions
+        function dragStart(e) {
+            e.dataTransfer.setData('text/plain', e.target.dataset.value);
+            e.target.classList.add('dragging');
+        }
+
+        function dragOver(e) {
+            e.preventDefault();
+            e.target.classList.add('highlight');
+        }
+
+        function drop(e) {
+            e.preventDefault();
+            e.target.classList.remove('highlight');
+            
+            const data = e.dataTransfer.getData('text/plain');
+            const draggedItem = document.querySelector(`.draggable[data-value="${data}"]`);
+            
+            if (e.target.classList.contains('dropzone')) {
+                // Remove any existing content
+                e.target.innerHTML = '';
+                
+                // Create filled element
+                const filled = document.createElement('div');
+                filled.className = 'filled';
+                filled.textContent = data;
+                
+                // Add remove button
+                const removeBtn = document.createElement('span');
+                removeBtn.className = 'remove-btn';
+                removeBtn.textContent = '×';
+                removeBtn.addEventListener('click', () => {
+                    e.target.innerHTML = '';
+                    draggedItem.style.display = 'inline-block';
+                    updateScore();
+                });
+                
+                filled.appendChild(removeBtn);
+                e.target.appendChild(filled);
+                
+                // Hide dragged item
+                draggedItem.style.display = 'none';
+                
+                // Update score
+                updateScore();
+            }
+        }
+
+        function updateScore() {
+            let correct = 0;
+            document.querySelectorAll('.dropzone').forEach(zone => {
+                if (zone.textContent.trim() === zone.dataset.correct) {
+                    correct++;
+                    zone.classList.add('correct');
+                    zone.classList.remove('incorrect');
+                } else if (zone.textContent.trim() && zone.textContent.trim() !== zone.dataset.correct) {
+                    zone.classList.add('incorrect');
+                    zone.classList.remove('correct');
+                } else {
+                    zone.classList.remove('correct', 'incorrect');
+                }
+            });
+            
+            currentDragDropScore = correct;
+            scoreDisplay.textContent = correct;
+            
+            if (correct === dragDropExercises.length) {
+                feedback.textContent = 'Perfect! You got all answers correct!';
+                feedback.className = 'feedback correct';
+            } else if (correct > 0) {
+                feedback.textContent = `Good job! You have ${correct} correct out of ${dragDropExercises.length}.`;
+                feedback.className = 'feedback correct';
+            } else {
+                feedback.textContent = '';
+                feedback.className = 'feedback';
+            }
+        }
+
+        function resetDragDrop() {
+            loadDragDropExercise();
+            feedback.textContent = '';
+            feedback.className = 'feedback';
+        }
+
+function checkAnswers() {
+    let allFilled = true;
+    document.querySelectorAll('.dropzone').forEach(zone => {
+        if (!zone.textContent.trim()) {
+            allFilled = false;
+        }
+    });
+    
+    if (!allFilled) {
+        feedback.textContent = 'Please fill in all blanks before checking answers.';
+        feedback.className = 'feedback incorrect';
+        return;
+    }
+    
+    updateScore(); // This will handle the feedback display
+}
+
+function updateScore() {
+    let correct = 0;
+    document.querySelectorAll('.dropzone').forEach(zone => {
+        if (zone.textContent.trim() === zone.dataset.correct) {
+            correct++;
+            zone.classList.add('correct');
+            zone.classList.remove('incorrect');
+        } else if (zone.textContent.trim() && zone.textContent.trim() !== zone.dataset.correct) {
+            zone.classList.add('incorrect');
+            zone.classList.remove('correct');
+        } else {
+            zone.classList.remove('correct', 'incorrect');
+        }
+    });
+    
+    currentDragDropScore = correct;
+    scoreDisplay.textContent = correct;
+    
+    if (correct === dragDropExercises.length) {
+        feedback.textContent = 'Perfect! You got all answers correct!';
+        feedback.className = 'feedback correct';
+    } else if (correct > 0) {
+        feedback.textContent = `Good job! You have ${correct} correct out of ${dragDropExercises.length}.`;
+        feedback.className = 'feedback correct';
+    } else {
+        feedback.textContent = 'Try again! None of the answers are correct yet.';
+        feedback.className = 'feedback incorrect';
+    }
+}
+
+        // Quiz Functions
+        function loadQuizQuestion() {
+            totalQuizQuestionsDisplay.textContent = quizQuestions.length;
+            currentQuestionDisplay.textContent = currentQuizQuestion + 1;
+            quizProgress.style.width = `${(currentQuizQuestion / quizQuestions.length) * 100}%`;
+            
+            const question = quizQuestions[currentQuizQuestion];
+            quizContent.innerHTML = `
+                <div class="quiz-question">
+                    <div class="quiz-question-text">${question.question}</div>
+                    <div class="quiz-options">
+                        ${question.options.map((option, index) => `
+                            <div class="quiz-option" onclick="selectQuizOption(this, ${index})">
+                                ${option}
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+                <div class="quiz-feedback" id="quiz-feedback"></div>
+            `;
+            
+            prevBtn.disabled = currentQuizQuestion === 0;
+            nextBtn.textContent = currentQuizQuestion === quizQuestions.length - 1 ? 'Finish' : 'Next';
+        }
+
+        function selectQuizOption(element, index) {
+            // Remove selected class from all options
+            document.querySelectorAll('.quiz-option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            
+            // Add selected class to clicked option
+            element.classList.add('selected');
+            
+            // Store the selected answer
+            quizAnswers[currentQuizQuestion] = index;
+            
+            // Show feedback if this question was already answered
+            showQuizFeedback();
+        }
+
+        function showQuizFeedback() {
+            const feedback = document.getElementById('quiz-feedback');
+            const question = quizQuestions[currentQuizQuestion];
+            
+            if (quizAnswers[currentQuizQuestion] !== undefined) {
+                const selectedOption = document.querySelectorAll('.quiz-option')[quizAnswers[currentQuizQuestion]];
+                
+                if (quizAnswers[currentQuizQuestion] === question.correctAnswer) {
+                    selectedOption.classList.add('correct');
+                    feedback.textContent = 'Correct! ';
+                    feedback.className = 'quiz-feedback show correct';
+                } else {
+                    selectedOption.classList.add('incorrect');
+                    document.querySelectorAll('.quiz-option')[question.correctAnswer].classList.add('correct');
+                    feedback.textContent = 'Incorrect. ';
+                    feedback.className = 'quiz-feedback show incorrect';
+                }
+                
+                feedback.innerHTML += `<span class="quiz-explanation">${question.explanation}</span>`;
+            } else {
+                feedback.textContent = '';
+                feedback.className = 'quiz-feedback';
+            }
+        }
+
+        function prevQuestion() {
+            if (currentQuizQuestion > 0) {
+                currentQuizQuestion--;
+                loadQuizQuestion();
+                showQuizFeedback();
+            }
+        }
+
+        function nextQuestion() {
+            if (quizAnswers[currentQuizQuestion] === undefined) {
+                document.getElementById('quiz-feedback').textContent = 'Please select an answer before proceeding.';
+                document.getElementById('quiz-feedback').className = 'quiz-feedback show incorrect';
+                return;
+            }
+            
+            if (currentQuizQuestion < quizQuestions.length - 1) {
+                currentQuizQuestion++;
+                loadQuizQuestion();
+                showQuizFeedback();
+            } else {
+                finishQuiz();
+            }
+        }
+
+        function finishQuiz() {
+            clearInterval(timerInterval);
+            
+            // Calculate score
+            let score = 0;
+            quizQuestions.forEach((question, index) => {
+                if (quizAnswers[index] === question.correctAnswer) {
+                    score++;
+                }
+            });
+            
+            // Show results
+            quizContent.innerHTML = `
+                <div class="quiz-results">
+                    <h3>Quiz Completed!</h3>
+                    <p>Your score: ${score} out of ${quizQuestions.length}</p>
+                    <p>Time taken: ${document.getElementById('timer').textContent}</p>
+                    <button class="btn btn-success" onclick="resetQuiz()">Try Again</button>
+                </div>
+            `;
+            
+            prevBtn.style.display = 'none';
+            nextBtn.style.display = 'none';
+        }
+
+        function resetQuiz() {
+            currentQuizQuestion = 0;
+            quizAnswers = [];
+            quizStartTime = new Date();
+            timerInterval = setInterval(updateTimer, 1000);
+            loadQuizQuestion();
+            prevBtn.style.display = 'inline-block';
+            nextBtn.style.display = 'inline-block';
+        }
+
+        function updateTimer() {
+            const now = new Date();
+            const elapsed = Math.floor((now - quizStartTime) / 1000);
+            const minutes = Math.floor(elapsed / 60);
+            const seconds = elapsed % 60;
+            document.getElementById('timer').textContent = `Time: ${minutes}:${seconds.toString().padStart(2, '0')}`;
+        }
+
+        // Writing Challenge Functions
+        function loadWritingPrompt() {
+            const randomPrompt = writingPrompts[Math.floor(Math.random() * writingPrompts.length)];
+            writingPrompt.textContent = randomPrompt;
+            
+            // Load device options
+            deviceSelect.innerHTML = '';
+            literalDevices.forEach(device => {
+                const option = document.createElement('option');
+                option.value = device.name;
+                option.textContent = device.name;
+                deviceSelect.appendChild(option);
+            });
+        }
+
+        function submitWriting() {
+            const text = userWriting.value.trim();
+            const device = deviceSelect.value;
+            
+            if (!text) {
+                alert('Please write something before submitting!');
+                return;
+            }
+            
+            // Add to submissions
+            userSubmissions.unshift({
+                text,
+                device,
+                timestamp: new Date().toLocaleString()
+            });
+            
+            // Update display
+            updateSubmissions();
+            
+            // Clear input
+            userWriting.value = '';
+            
+            // Show success message
+            alert('Submission successful! Check the Recent Submissions section.');
+        }
+
+        function updateSubmissions() {
+            submissionsContainer.innerHTML = `
+                <h3>Recent Submissions</h3>
+                ${userSubmissions.slice(0, 5).map(sub => `
+                    <div class="submission">
+                        <div class="submission-header">
+                            <span class="submission-device">${sub.device}</span>
+                            <span>${sub.timestamp}</span>
+                        </div>
+                        <p>${sub.text}</p>
+                    </div>
+                `).join('')}
+            `;
+        }
+
+        // Leaderboard Functions
+        function loadLeaderboard(timeframe) {
+            const data = leaderboardData[timeframe];
+            
+            leaderboardTable.innerHTML = `
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Name</th>
+                        <th>Score</th>
+                        <th>Badges</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${data.map((user, index) => `
+                        <tr class="${index === 0 ? 'top-rank' : ''}">
+                            <td class="rank">${index + 1}</td>
+                            <td>${user.name}</td>
+                            <td>${user.score}</td>
+                            <td>${'★'.repeat(user.badges)}</td>
+                        </tr>
+                    `).join('')}
+                </tbody>
+            `;
+        }
+
+        function showLeaderboard(timeframe) {
+            loadLeaderboard(timeframe);
+        }
+
+        // Tab Functions
+        function openTab(tabName) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Deactivate all tab buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show selected tab content
+            document.getElementById(tabName).classList.add('active');
+            
+            // Activate clicked button
+            event.currentTarget.classList.add('active');
+            
+            // Update current tab
+            currentTab = tabName;
+        }
+
+        function filterDevices(category) {
+            currentDeviceFilter = category;
+            
+            // Update active category button
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.currentTarget.classList.add('active');
+            
+            // Reload devices
+            loadDevices();
+        }
+
+        // Initialize the app when DOM is loaded
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+
+</body></html>
